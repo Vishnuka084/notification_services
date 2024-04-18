@@ -14,14 +14,14 @@
         <input type="text" id="text" placeholder="Text"/>
     </div>
     <br />
-    <div>
+<!--    <div>
         <button id="sendPrivateMessage" onclick="sendPrivateMessage();">Send Private</button>
         <input type="text" id="privateText" placeholder="Private Message"/>
         <input type="text" id="to" placeholder="To"/>
     </div>
     <br />
     <br />
-    <br />
+    <br />-->
 
     <div id="messages"></div>
 
@@ -40,6 +40,14 @@
             show(JSON.parse(result.body));
         });
     });
+
+
+
+    function sendMessage() {
+        var text = document.getElementById('text').value
+        stompClient.send('/app/application', {}, JSON.stringify({ from: from, text: text }))
+    }
+
 
 </script>
 
